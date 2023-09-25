@@ -1,0 +1,29 @@
+name: Python Application CI
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.1
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Change this to your actual requirements file
+
+    - name: Run tests
+      run: |
+        python -m unittest discover  # Replace with your testing command
+
+    - name: Deploy
